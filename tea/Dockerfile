@@ -1,4 +1,4 @@
-FROM jhimjhim
+FROM golang
 WORKDIR /tea
 COPY main.go .
 RUN go build ./main.go
