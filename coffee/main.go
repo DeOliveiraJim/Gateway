@@ -6,36 +6,26 @@ import (
 	"os"
 )
 
-func coffeeHandler(w http.ResponseWriter, r *http.Request) {
+func carrierHandler(w http.ResponseWriter, r *http.Request) {
 	servant, err := os.Hostname()
+
+	first := r.URL.Query().Get("first")
+	second := r.URL.Query().Get("second")
+
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	w.Write([]byte("Your Coffee has been served by - " + servant))
+	w.Write([]byte("User  " + servant + " is accessing MS Carrier ! first = " + first + "second = " + second))
 }
 
-func pourOverHandler(w http.ResponseWriter, r *http.Request) {
-	servant, err := os.Hostname()
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	w.Write([]byte("Your Pour Over has been served by - " + servant))
-}
+const keyServerAddr = "server 127.0.0.1"
 
-func aeropressHandler(w http.ResponseWriter, r *http.Request) {
-	servant, err := os.Hostname()
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	w.Write([]byte("Your Aeropress has been served by - " + servant))
+func String(any any) {
+	panic("unimplemented")
 }
 
 func main() {
-	http.HandleFunc("/coffee", coffeeHandler)
-	http.HandleFunc("/coffee/pour-over", pourOverHandler)
-	http.HandleFunc("/coffee/aeropress", aeropressHandler)
+	http.HandleFunc("/test", carrierHandler)
 	log.Fatal(http.ListenAndServe(":8181", nil))
 }
