@@ -1,10 +1,22 @@
-version: '1'
+version: '2'
 services:
-  coffee:
+  carrier:
     build: carrier/.
     ports:
         - "8181:8181"
-  tea:
+  errand:
     build: errand/.
     ports:
         - "8282:8282"  
+  alert:
+    build: alert/.
+    ports:
+        - "8383:8383" 
+  delivery:
+    build: delivery/.
+    ports:
+        - "8484:8484" 
+  planner:
+    build: planner/.
+    ports:
+        - "8585:8585"                         

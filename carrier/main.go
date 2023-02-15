@@ -17,17 +17,19 @@ func carrierHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	w.Write([]byte("User  " + servant + " is accessing MS Carrier ! first = " + first + "second = " + second))
+	param := strings.TrimPrefix(r.URL.Path, "/test/")
+	w.Write([]byte("User  " + servant + " is accessing MS Carrier ! first = " + first + "second = " + second + "param = {" + param + "}"))
+
 }
 
 func carrierTypeHandler(w http.ResponseWriter, r *http.Request) {
-    servant, err := os.Hostname()
-    if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-        return
-    }
-    param := strings.TrimPrefix(r.URL.Path, "/test/")
-    w.Write([]byte("User  " + servant + " is accessing MS Carrier ! param = {" + param + "}"))
+	servant, err := os.Hostname()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	param := strings.TrimPrefix(r.URL.Path, "/test/")
+	w.Write([]byte("User  " + servant + " is accessing MS Carrier ! param = {" + param + "}"))
 }
 
 const keyServerAddr = "server 127.0.0.1"
