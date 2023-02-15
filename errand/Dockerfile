@@ -1,5 +1,5 @@
 FROM golang
-WORKDIR /tea
+WORKDIR /errand
 COPY main.go .
 RUN go build ./main.go
 EXPOSE 8282

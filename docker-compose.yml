@@ -1,10 +1,10 @@
 version: '1'
 services:
   coffee:
-    build: coffee/.
+    build: carrier/.
     ports:
         - "8181:8181"
   tea:
-    build: tea/.
+    build: errand/.
     ports:
         - "8282:8282"  
